@@ -24,7 +24,8 @@
 
       // ============== FILL IN CODE HERE FOR STEP TWO =========================
 
-      // CODE GOES HERE
+      var state = $(this).attr('data-state');
+
 
       // =============================================
 
@@ -32,11 +33,26 @@
       // then update the src attribute of this image to it's data-animate value,
       // and update the data-state attribute to 'animate'.
 
-      // If state does not equal 'still', then update the src attribute of this
+      // If state does equals 'still', then update the src attribute of this
       // image to it's data-animate value and update the data-state attribute to 'still'
+
+      // we want to store the state of the element in the 
+      // jQuery object
       // ============== FILL IN CODE HERE FOR STEP THREE =========================
 
-      // CODE GOES HERE
+      if (state==='still') {
+         $(this).attr('src', $(this).attr('data-animate'));
+         $(this).attr('data-state', 'animate')
+      }
+
+     if (state==='animate') {
+         $(this).attr('src', $(this).attr('data-still'));
+         $(this).attr('data-state', 'still')
+      }
+
+     // thus we have created a toggle... a common pattern
+     // click on check-box to see check-mark
+     // click on it again to remove the check-mark
 
       // ==============================================
 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Dodgers Button</title>
+</head>
+
+<body>
+  <button id="dodger-button">magical dodger button</button>
+  <div id="images">
+  </div>
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript">
+    //
+    $("#dodger-button").on("click", function() {
+
+      //
+      var queryURL = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=dodgers";
+
+      //
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+
+      //
+      .done(function(response) {
+
+        //
+        var imageUrl = response.data.image_original_url;
+
+        //
+        var dodgerImage = $("<img>");
+
+        //
+        dodgerImage.attr("src", imageUrl);
+        dodgerImage.attr("alt", "dodger image");
+
+        //
+        $("#images").prepend(dodgerImage);
+      });
+    });
+  </script>
+</body>
+
+</html>

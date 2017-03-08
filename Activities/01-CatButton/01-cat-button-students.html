@@ -12,32 +12,51 @@
   </div>
   <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script type="text/javascript">
-    //
+    // event listener assigned to cat-button
+    // attaches event listener listening for the click event
     $("#cat-button").on("click", function() {
-
-      //
+      // assign api link to a variable
+      // property-value pairs being set as parameter values
+      // these are query parameters that allow us to ask
+      // for specific information from the api
+      // each key-value pair is separated by an ampersand
+      // the keys here are the api_key and tab
       var queryURL = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats";
-
-      //
+      // this is the url location... not sure what the key is
+      // bling goes with jQuery... connecting up with
+      // the asynchronous xml 
+      // .ajax is a method in jQuery
+      // the {} defines an object data type 
+      // with properties and values
       $.ajax({
         url: queryURL,
         method: "GET"
       })
-
-      //
+      // here we have a call...  type of callback... a promise
+      // set up the connection to the URL
       .done(function(response) {
-
-        //
+        // the response will be passed to an anonymous function
+        // the argument passed to the done method is a function
+        // this is an asychronous promise of a response
+        // response is an argument being passed to the anonymous function
         var imageUrl = response.data.image_original_url;
 
-        //
-        var catImage = $("<img>");
+        // here we grab the video short from the response
+        // <> symbol means we are creating a new element with $ for jQuery
+        var catImage = $("<img>");  // creating a jQuery collection
 
-        //
+        // here we use setters... we are putting information into catImage
+        // setter has property and value
+        // a getter would just have the property part
         catImage.attr("src", imageUrl);
         catImage.attr("alt", "cat image");
 
-        //
+        // could console.log to see what this jQuery object looks like
+
+        // setting the attributes of catImage
+        // and now we put this image at the beginning 
+        // of the group of images
+        // prepend puts at the top
         $("#images").prepend(catImage);
       });
     });
